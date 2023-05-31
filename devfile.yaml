@@ -1,0 +1,40 @@
+commands:
+- exec:
+    commandLine: dotnet run --project $STARTUP_PROJECT
+    component: dotnet
+    group:
+      isDefault: true
+      kind: run
+    workingDir: ${PROJECT_SOURCE}/sampleweb
+  id: run
+components:
+- container:
+    args:
+    - tail
+    - -f
+    - /dev/null
+    endpoints:
+    - name: http-dotnet60
+      targetPort: 5001
+    env:
+    - name: CONFIGURATION
+      value: Debug
+    - name: STARTUP_PROJECT
+      value: sampleweb.csproj
+    - name: ASPNETCORE_ENVIRONMENT
+      value: Development
+    image: registry.access.redhat.com/ubi8/dotnet-60:6.0
+    mountSources: true
+  name: dotnet
+metadata:
+  description: .NET 6.0 application
+  displayName: .NET 6.0
+  icon: https://github.com/dotnet/brand/raw/main/logo/dotnet-logo.png
+  language: .NET
+  name: myapp
+  projectType: dotnet
+  tags:
+  - .NET
+  - .NET 6.0
+  version: 1.0.2
+schemaVersion: 2.1.0
