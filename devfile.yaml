@@ -5,7 +5,7 @@ commands:
     group:
       isDefault: true
       kind: run
-    workingDir: ${PROJECT_SOURCE}/sampleweb
+    workingDir: ${PROJECT_SOURCE}/sampleapp
   id: run
 components:
 - container:
@@ -20,7 +20,7 @@ components:
     - name: CONFIGURATION
       value: Debug
     - name: STARTUP_PROJECT
-      value: sampleweb.csproj
+      value: sampleapp.csproj
     - name: ASPNETCORE_ENVIRONMENT
       value: Development
     image: registry.access.redhat.com/ubi8/dotnet-60:6.0
